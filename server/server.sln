@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "api\api.csproj", "{0666E735-5683-4D84-8632-912671B8427F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "efscaffold", "efscaffold\efscaffold.csproj", "{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{0666E735-5683-4D84-8632-912671B8427F}.Release|x64.Build.0 = Release|Any CPU
 		{0666E735-5683-4D84-8632-912671B8427F}.Release|x86.ActiveCfg = Release|Any CPU
 		{0666E735-5683-4D84-8632-912671B8427F}.Release|x86.Build.0 = Release|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Debug|x64.Build.0 = Debug|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Release|x64.ActiveCfg = Release|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Release|x64.Build.0 = Release|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE29DE44-3F39-4D69-A0A0-F3AEC708D3E1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
