@@ -10,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 var appOptions = builder.Services.AddAppOptions(builder.Configuration);
 
-Console.WriteLine(JsonSerializer.Serialize(appOptions));
+Console.WriteLine("the app options are: " + JsonSerializer.Serialize(appOptions));
+
 Console.WriteLine($"Connection string: {appOptions.DbConnectionString}");
 
 builder.Services.AddDbContext<MyDbContext>(conf =>
@@ -18,7 +19,15 @@ builder.Services.AddDbContext<MyDbContext>(conf =>
     conf.UseNpgsql(appOptions.DbConnectionString);
 });
 
+builder.Services.AddCors();
+
 var app = builder.Build();
+
+app.UseCors(config => config
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowAnyOrigin()
+    .SetIsOriginAllowed(x => true));
 
 app.MapGet("/", (
     
