@@ -1,4 +1,5 @@
-﻿using efscaffold.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using efscaffold.Entities;
 using Infrastructure.Postgres.Scaffolding;
 
 namespace api;
@@ -24,5 +25,16 @@ public class TodoService(MyDbContext dbContext) : ITodoService
     public async Task<List<Todo>> GetAllTodos()
     {
         return dbContext.Todos.ToList();
+    }
+
+    public async Task<Todo> ToggleTodo(Todo todo)
+    {
+        var currentObject = dbContext.Todos.FirstOrDefault(t => t.Id == todo.Id) ??
+                            throw new ValidationException("could not be found");
+        currentObject.Isdone = !currentObject.Isdone;
+        dbContext.Todos.Update(currentObject);
+        dbContext.SaveChanges();
+        return currentObject;
+
     }
 }

@@ -25,5 +25,13 @@ public class TodoController(ITodoService todoService) : ControllerBase
         var result = await todoService.CreateTodo(dto);
         return result;
     }
+
+    [Route(nameof(ToggleChecked))]
+    [HttpPut]
+    public async Task<ActionResult<Todo>> ToggleChecked([FromBody] Todo t)
+    {
+        var result = await todoService.ToggleTodo(t);
+        return result;
+    }
     
 }

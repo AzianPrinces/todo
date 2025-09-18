@@ -1,5 +1,6 @@
 using System.Text.Json;
 using api;
+using api.Etc;
 using efscaffold.Entities;
 using Infrastructure.Postgres.Scaffolding;
 using Microsoft.AspNetCore.Mvc;
@@ -14,9 +15,12 @@ Console.WriteLine("the app options are: " + JsonSerializer.Serialize(appOptions)
 Console.WriteLine($"Connection string: {appOptions.DbConnectionString}");
 
 builder.Services.AddScoped<ITodoService, TodoService>();
-builder.Services.AddDbContext<MyDbContext>(conf =>
+builder.Services.AddDbContext<MyDbContext>((sp, conf) =>
 {
-    conf.UseNpgsql(appOptions.DbConnectionString);
+    var opts = sp.GetRequiredService<IOptions<AppOptions>>().Value;
+    if (string.IsNullOrWhiteSpace(opts?.DbConnectionString))
+        throw new Exception("Missing DB connection string. Ensure env var `AppOptions__DbConnectionString` is set and correctly quoted.");
+    conf.UseNpgsql(opts.DbConnectionString);
 });
 
 builder.Services.AddControllers();
@@ -39,5 +43,6 @@ app.MapControllers();
 app.UseOpenApi();
 app.UseSwaggerUi();
 app.UseExceptionHandler();
+await app.GenerateApiClientsFromOpenApi("/../../client/src/generated-ts-client.ts");
 
 app.Run();
